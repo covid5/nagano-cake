@@ -1,0 +1,26 @@
+<h1>商品新規登録</h1>
+
+<!-- form_for部分 -->
+
+<%= form_for(@product) do |f| %>
+
+<!-- 商品画像 -->
+<%= f.attachment_field :image_id %>
+<h3>商品名</h3>
+<%= f.text_field :name %>
+<h3>商品説明</h3>
+<%= f.text_area :description %>
+
+<!-- ジャンルのプルダウンからの選択、ジャンルの登録に紐づいているので後から確認 -->
+<h3>ジャンル</h3>
+<%= f.select :genre_id, [["後で変更","後で変更"],["1","1"]], include_blank: "--選択してください--" %>
+
+<h3>税抜価格</h3>
+<%= f.text_field :price %>
+
+<h3>販売ステータス</h3>
+<%= f.select :salling_status, [["販売中","販売中"],["販売停止中","販売停止中"]], include_blank: "--選択してください--" %>
+
+<%= f.submit "新規登録" %>
+
+<% end %>
