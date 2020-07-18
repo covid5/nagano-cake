@@ -2,10 +2,10 @@
 
 <!-- form_for部分 -->
 
-<%= form_for(@product) do |f| %>
+<%= form_for(@product_new) do |f| %>
 
 <!-- 商品画像 -->
-<%= f.attachment_field :image_id %>
+<%= f.attachment_field :image %>
 <h3>商品名</h3>
 <%= f.text_field :name %>
 <h3>商品説明</h3>
@@ -13,7 +13,7 @@
 
 <!-- ジャンルのプルダウンからの選択、ジャンルの登録に紐づいているので後から確認 -->
 <h3>ジャンル</h3>
-<%= f.select :genre_id, [["後で変更","後で変更"],["1","1"]], include_blank: "--選択してください--" %>
+<%# <%= f.select :genre_id, [["後で変更","後で変更"],["1","1"]], include_blank: "--選択してください--" %>
 
 <h3>税抜価格</h3>
 <%= f.text_field :price %>
