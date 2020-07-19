@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 header {
 	color:white;
 }
@@ -21,3 +22,34 @@ header .navbar-left {
 	font-size: 20px;
 	padding-top: 10px;
 }
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+dt{
+  float: left;
+  font-size: 18px;
+  width: 200px;
+}
+
+dd{
+  margin-left: 120px;
+  font-size: 20px;
+}
+
+.glyphicon-plus{
+  float: right;
+  margin-bottom: 5px;
+}
+
