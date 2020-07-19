@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+
+  devise_for :admins, controllers: {
+  	sessions: 'admins/sessions'
+  }
+  root 'admin/homes#top'
+  get '/members/about' => 'members#about'
+  get '/admin/products' => 'admin/products#index'
+
   devise_for :members
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-<<<<<<< HEAD
-end
-=======
+
 
   resources :products, xcept: [:destroy]
 
@@ -12,4 +18,4 @@ end
     end
 
 end
->>>>>>> b2635aaef241dae977f175eabfb82432a1876257
+

@@ -9,6 +9,11 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 2020_07_16_124303) do
+
+  create_table "admins", force: :cascade do |t|
+
 ActiveRecord::Schema.define(version: 2020_07_18_132749) do
 
   create_table "members", force: :cascade do |t|
@@ -17,6 +22,11 @@ ActiveRecord::Schema.define(version: 2020_07_18_132749) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+
     t.string "last_name", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_name_kana", default: "", null: false
@@ -51,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_07_18_011044) do
 
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
   end
 
 end
