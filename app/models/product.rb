@@ -3,5 +3,5 @@ class Product < ApplicationRecord
 	# belongs_to :admin
 	belongs_to :genre, foreign_key: "genre_id"
 
-	enum salling_status:{sale: 0, Stopselling: 1}
+	enum salling_status:{sale: 0, soldout: 1}
 end

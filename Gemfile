@@ -68,3 +68,5 @@ gem 'kaminari','~> 1.2.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'will_paginate'
+
+gem 'enum_help'
