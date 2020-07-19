@@ -1,15 +1,17 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @genres = Genre.all
   end
 
   def new
     @product_new = Product.new
+    @genres = Genre.all
   end
 
   def create
-    product_new = Product.new(product_params)
-    product_new.save
+    @product_new = Product.new(product_params)
+    @product_new.save
     redirect_to products_path
   end
 
@@ -33,6 +35,6 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:image, :name, :description, :genre_id, :price, :salling_status)
-
   end
+
 end

@@ -24,7 +24,7 @@
 						<dt>商品説明</dt>
 						<dd><%= @product.description %></dd>
 						<dt>ジャンル</dt>
-						<dd>ジャンル後から設定</dd>
+						<dd><%= @product.genre_id %></dd>
 						<dt>税込価格（税抜価格）</dt>
 						<dd><%= @product.price %>(order_detailsから販売価格持ってくる？）円</dd>
 						<dt>販売ステータス</dt>
