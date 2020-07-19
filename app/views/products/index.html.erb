@@ -1,0 +1,29 @@
+<div class="container">
+
+	<div class="row">
+		<h1>商品一覧</h1>
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+
+	</div>
+
+	<div class="row">
+		<table class="products-list table">
+			<tr class="active">
+				<th>商品ID</th>
+				<th>商品名</th>
+				<th>税抜価格</th>
+				<th>ジャンル</th>
+				<th>ステータス</th>
+			</tr>
+			<% @products.each do |product| %>
+			<tr>
+				<td><%= product.id %></td>
+				<td><%= product.name %></td>
+				<td><%= product.price %></td>
+				<td><%= product.genre_id %></td>
+				<td><%= product.salling_status %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
