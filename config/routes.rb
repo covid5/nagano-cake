@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
 
     namespace :member do
-    	resources :shipping_addresses, except: [:show, :new]
+        resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
     end
 
 end

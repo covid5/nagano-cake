@@ -24,16 +24,6 @@ ActiveRecord::Schema.define(version: 2020_07_19_075338) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "cart_products", force: :cascade do |t|
-    t.integer "number"
-    t.integer "member_id", null: false
-    t.integer "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_cart_products_on_member_id"
-    t.index ["product_id"], name: "index_cart_products_on_product_id"
-  end
-
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.boolean "disabled", default: false, null: false
@@ -80,8 +70,8 @@ ActiveRecord::Schema.define(version: 2020_07_19_075338) do
   create_table "shipping_addresses", force: :cascade do |t|
     t.integer "member_id"
     t.string "post_code"
-    t.string "adress"
-    t.string "adress_name"
+    t.string "address"
+    t.string "address_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
