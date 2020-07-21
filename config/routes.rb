@@ -10,6 +10,14 @@ Rails.application.routes.draw do
   devise_for :members
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+namespace :admin do
+resources :members, only: [:show, :edit, :update, :index]
+end
+scope module: :member do
+	resources :orders, only: [:index,:show]
+	
+end
+
 
   resources :products, xcept: [:destroy]
 
@@ -21,6 +29,7 @@ Rails.application.routes.draw do
     namespace :member do
         resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
     end
+
 
 end
 
