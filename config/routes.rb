@@ -21,8 +21,13 @@ end
 
   resources :products, xcept: [:destroy]
 
+
     namespace :admin do
         resources :genres, only: [:index, :create, :edit, :update]
+    end
+
+    namespace :member do
+        resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
     end
 
 
