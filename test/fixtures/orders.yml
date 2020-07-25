@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member_id: 1
+  postage: 1
+  peyment_method: 1
+  total_amount: 1
+
+two:
+  member_id: 1
+  postage: 1
+  peyment_method: 1
+  total_amount: 1
