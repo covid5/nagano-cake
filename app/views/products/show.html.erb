@@ -10,6 +10,7 @@
 
 	    <title>商品詳細</title>
 	</head>
+	</html>
  	<body>
  		<div class="container">
  			<div class="row"><h1>商品詳細</h1></div>
@@ -24,11 +25,11 @@
 						<dt>商品説明</dt>
 						<dd><%= @product.description %></dd>
 						<dt>ジャンル</dt>
-						<dd>ジャンル後から設定</dd>
+						<dd><%= @product.genre.name %></dd>
 						<dt>税込価格（税抜価格）</dt>
 						<dd><%= @product.price %>(order_detailsから販売価格持ってくる？）円</dd>
 						<dt>販売ステータス</dt>
-						<dd><%= @product.salling_status %></dd>
+						<dd><%= @product.salling_status_i18n %></dd>
 					</dl>
 
 					<%= link_to '編集する', edit_product_path, class: "btn btn-info" %>

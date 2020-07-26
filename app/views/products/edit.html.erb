@@ -10,6 +10,7 @@
 
 	    <title>商品編集</title>
 	</head>
+</html>
  	<body>
  		<div class="container">
  			<div class="row"><h1>商品編集</h1></div>
@@ -18,21 +19,20 @@
           <%= form_for(@product) do |f| %>
 					<%= attachment_image_tag @product, :image, :fill, 300, 300 %>
           <%= f.attachment_field :image %>
-          <% end %>
 				</div>
 			  <div class="col-lg-8">
-          <%= form_for(@product) do |f| %>
           <dl>
 						<dt>商品名</dt>
             <dd><%= f.text_field :name %></dd>
             <dt>商品説明</dt>
 						<dd><%= f.text_area :description %></dd>
             <dt>ジャンル</dt>
-						<dd>ジャンル後から設定</dd>
+						<dd><%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択してください--" %></dd>
 						<dt>税込価格（税抜価格）</dt>
 						<dd><%= f.text_field :price %>円</dd>
 						<dt>販売ステータス</dt>
-						<dd><%= f.select :salling_status, [["販売中","販売中"],["販売停止中","販売停止中"]], include_blank: "--選択してください--"  %></dd>
+						<dd><%= f.select :salling_status, Product.salling_statuses.keys.map {|k| [I18n.t("enums.product.salling_status.#{k}"), k]} %></dd>
+
 					</dl>
           <%= f.submit "変更を保存", class: "btn btn-info" %>
           <% end %>
