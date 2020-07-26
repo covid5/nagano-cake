@@ -1,6 +1,6 @@
-class Admin::OrdersController < ApplicationControlle
+class Admin::OrdersController < Admin::ApplicationControlle
 before_action :set_order, only: [:show, :update_order, :update_produtcts]
-  
+
   def index
 
     @orders = Order.pagenate :page=>params[:page],  :per_page =>10
@@ -15,7 +15,7 @@ before_action :set_order, only: [:show, :update_order, :update_produtcts]
 end
 
  def show
- 	
+
  end
   def update_order
     respond_to do |format|
@@ -29,5 +29,3 @@ end
   end
   def update_produtcts
   end
-
-

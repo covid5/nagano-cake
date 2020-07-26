@@ -1,18 +1,18 @@
-class Admin::MembersController < ApplicationController
-	
+class Admin::MembersController < Admin::ApplicationController
+
 	def index
 		@members = Member.all
 	end
-	
+
 	def show
 		@members = Member.find(params[:id])
 	end
-	
+
 	def edit
 		@members = Member.find(params[:id])
 	end
 
-	
+
 	def update
 		@members = Member.find(params[:id])
 		@member.update(member_params)
