@@ -1,20 +1,22 @@
 class Member::OrdersController < ApplicationController
   def new
     @order = Order.new
+    @shipping_addresses = ShippingAddress.all
 
   end
 
   def confirm
     @order = Order.new(order_params)
-    return if @order.valid?
-    render :new
+    render :new if @order.valid?
   end
 
   def create
     @order = Order.new(order_params)
-    @order.save
-    redirect_to 'member_orders_confirm_path	'
+    render :new and return if params[:back] || !@order.save
+    redirect_to thank_path
   end
+
+
 
   def thank
   end

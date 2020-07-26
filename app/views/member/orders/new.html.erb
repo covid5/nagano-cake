@@ -2,8 +2,7 @@
 <h1>注文情報入力</h1>
 
 <!-- form_for部分 -->
-<%= form_for(@order, url: '/orders/new') do |f| %>
-
+<%= form_with model: @order do  |f| %>
 
 <h3>支払方法</h3>
 <div class="field">
@@ -13,16 +12,17 @@
 
 <h3>お届け先</h3>
 <div class="field">
-    <label><%= f.radio_button :address_a, :カスタマーの住所予定, checked: "checked" %> ご自身の住所</label><br />
-    <p>ユーザーの住所が表示</p>
+    <label><%= f.radio_button :address_option, 0, checked: "checked" %> ご自身の住所</label><br />
 
-    <%= f.label :カスタマーの住所 %>
-    <label><%#= f.collection_select :address_a, :@members, :id, full_address %> 登録済住所から選択</label><br />
 
-    <%#  f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
 
-    <label><%= f.radio_button :address_a, :test, checked: "checked" %>
-      新しいお届け先</label><br>
+
+    <label><%= f.radio_button :address_option, 1, checked: "checked" %> 登録済住所から選択</label><br />
+    <%= f.collection_select :address_option, @shipping_addresses, :id, :full_address %>
+    
+
+    <br>
+    <label><%= f.radio_button :address_option, 2, checked: "checked" %> 新しいお届け先</label><br />
 
     <%= f.label :郵便番号 %>
     <%= f.text_field :postal_code %><br>

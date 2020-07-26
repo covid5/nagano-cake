@@ -4,7 +4,10 @@ class Order < ApplicationRecord
 	belongs_to :member
 	has_many :order_detail
 
-attachments :profile_image
+  attachment :image
 
+  def full_address
+    self.post_code + self.address + self.address_name
+  end
 
 end
