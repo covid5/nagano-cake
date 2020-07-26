@@ -5,33 +5,39 @@
   <nav class="navbar navbar-expand-lg">
     <!-- ロゴ画像。あとで差し替え。 -->
     <div>
-      <%= link_to members_top_path, style: 'color: #fcbf1e' do %>
+      <%= link_to members_about_path, style: 'color: #fcbf1e' do %>
       <h1>LOGO</h1>
       <% end %>
     </div>
 
     <!-- 管理者ログイン時と顧客ログイン時、非ログイン時で表示切替。 -->
     <div class="collapse navbar-collapse" id="navbarFumizuki">
-      <!-- 管理者 -->
-      <ul class="navbar-nav mr-auto w-75 nav-justified">
+      <!-- admin -->
+      <ul class="nav navbar-nav navbar-right">
         <% if admin_signed_in? %>
           <div class="admin-message">管理者としてログインしています</div>
           <li class="nav-item"><%= link_to '商品一覧', admin_products_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to '会員一覧', admin_customers_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '会員一覧', admin_genres_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '注文履歴一覧', admin_genres_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ジャンル管理', admin_genres_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
-        <!-- 顧客 -->
+           <form class="form-inline my-2 my-lg-0">
+        <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...">
+        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
+        </form>
+        <!-- member -->
         <% elsif member_signed_in? %>
+        <p>ようこそ<%= current_member.first_name %>
+                  <%= current_member.last_name %>さん！</p>
           <li class="nav-item"><%= link_to 'About', members_about_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'マイページ', members_path(current_member.id), class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to '商品一覧', member_products_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'カート', member_carts_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'マイページ', members_about_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '商品一覧', members_about_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'カート', members_about_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link' %></li>
         <!-- 非ログイン -->
         <% else %>
           <li class="nav-item"><%= link_to 'About', members_about_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to '商品一覧', products_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '商品一覧', members_about_path, class: 'nav-link' %></li>
           <li class="nav-item" ><%= link_to '新規登録', new_member_registration_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ログイン', new_member_session_path, class: 'nav-link' %></li>
         <% end %>
@@ -40,12 +46,12 @@
       <% if member_signed_in? %>
         <p>ようこそ<%= current_member.first_name %>
                   <%= current_member.last_name %>さん！</p>
-      <% else admin_signed_in? %>
+     <!--  <% else admin_signed_in? %> -->
         <!-- 検索フォームは仮。あとで機能するものを作って差し替え。 -->
-        <form class="form-inline my-2 my-lg-0">
-        <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...">
-        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
-        </form>
+        <!-- <form class="form-inline my-2 my-lg-0"> -->
+        <!-- <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索..."> -->
+        <!-- <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button> -->
+        <!-- </form> -->
       <% end %>
     </div>
   </nav>
