@@ -1,6 +1,6 @@
-<h3><%= member.first_name member.last_name %>さんの会員情報編集</h3>
+<h3><%= @member.first_name %><%=@member.last_name %>さんの会員情報編集</h3>
 <table>
-<%= form_for(@member) do |f| %>
+<%= form_for @member,url: admin_member_path do |f| %>
  <div class="form-group has-icon">
 	 <tr>
 	 	<td>氏名</td>
@@ -9,29 +9,30 @@
 	 	</tr>
 	 	<tr>
 	 	<td>フリガナ</td>
-	 	<td><%= text_field :first_name_kana %>
-	 		<%= text_field :last_name_kana %>
+	 	<td><%= f.text_field :first_name_kana %>
+	 		<%= f.text_field :last_name_kana %>
 	 	</td>
 	 </tr>
 	 <tr>
 	 	<td>郵便番号</td>
-	 	<td><%= text_field :postal_code %></td>
+	 	<td><%= f.text_field :post_code %></td>
 	 </tr>
 	 <tr>
 	 	<td>住所</td>
-	 	<td><%= text_field :address %></td>
+	 	<td><%= f.text_field :address %></td>
 	 </tr>
 	 <tr>
 	 	<td>電話番号</td>
-	 	<td><%= text_field :phone_nunber %></td>
+	 	<td><%= f.text_field :phone_number %></td>
 	 </tr>
 	 <tr>
 	 	<td>メールアドレス</td>
-	 	<td><%= text_field :email %></td>
+	 	<td><%= f.text_field :email %></td>
 	 </tr>
 	 <tr>
 	 	<td>会員ステータス</td>
 	 	<td>
+
 
   		<div class="radio-inline">
     	<label><%= f.radio_button :status, :有効, checked: "checked" %>有効</label>
@@ -43,6 +44,7 @@
   		</div>
   	</td>
 	</tr>
+</table>
 
 
 

@@ -52,7 +52,7 @@
 	<% @cart_product.each do|cart| %>
 		<tr>
 			<td><%= product.name %></td>
-			<td><%= product.price %></td>
+			<td><%= product.price*1.1 %></td>
 			<td><%= cart_product.number %> </td>
 			<td><%=  product.price * cart_product.number %></td>
 		</tr>
