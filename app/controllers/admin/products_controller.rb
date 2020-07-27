@@ -7,7 +7,7 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product_new = Product.new
-    @genres = Genre.all
+    @genres = Genre.where.not(disabled: "true")
   end
 
   def create
@@ -22,7 +22,7 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @genres = Genre.all
+    @genres = Genre.where.not(disabled: "true")
   end
 
   def update
