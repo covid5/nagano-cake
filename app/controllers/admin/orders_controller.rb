@@ -1,31 +1,18 @@
-class Admin::OrdersController < Admin::ApplicationControlle
-before_action :set_order, only: [:show, :update_order, :update_produtcts]
-
+class Admin::OrdersController < ApplicationController
   def index
+  	path = Rails.application.routes.recognize_path(request.referer)
+  	path_controller = path[:controller]
+  	path_action = path[:action]
 
-    @orders = Order.pagenate :page=>params[:page],  :per_page =>10
-
-	respond_to do |format|
-		format.html
-		format.json { render json: @orders }
+  	if path_controller == "admin/homes" && path_action == "top"
+  	  @orders = Order.where("created_at: >=?", Time.zone.now.beginning_of_day).page(params[:page]).reverse_order
+	elsif path_controller == "admin/member" && path_action == "show"
+	  @orders = Member.find(params[:id]).orders.page(params[:page]).reverse_order
+	else @orders = Order.all.page(params[:page]).reverse_order
 	end
-
-  end
-
 end
 
- def show
+  def show
+  end
+end
 
- end
-  def update_order
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: '注文情報を更新しました。' }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-  def update_produtcts
-  end

@@ -1,48 +1,15 @@
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
-<br>
-<h1>注文一覧</h1>
-<br>
+
+<h1>注文履歴一覧</h1>
+
 <table>
-  <thead>
-    <tr>
-      <th>注文ID</th>
-      <th>注文内容</th>
-      <th>氏名</th>
-      <th>住所</th>
-      <th>メールアドレス</th>
-      <th>電話番号</th>
-      <th>支払い方法</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-	<td><%= order.id %></td>
-
-	<td>
-	<% order.line_items.each do |item| %>
-		[商品ID:<%= item.good.goods_id %>]
-		[商品名：<%= item.good.title %>]
-		[数量：<%= item.quantity %>]
-		[金額：<%= (item.total_price).to_i %>円]
-		<br>
-	<% end %>
-	</td>
-        <td><%= order.name %></td>
-        <td><%= order.address %></td>
-        <td><%= order.email %></td>
-        <td><%= order.tel_number %></td>
-        <td><%= order.pay_type %></td>
-        <td><%= link_to '詳細', order, :class => 'btn' %></td>
-        <td><%= link_to '編集', edit_order_path(order), :class => 'btn' %></td>
-        <td><%= link_to '削除', order, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, :class => 'btn' %></td>
-      </tr>
-
-    <% end %>
-  </tbody>
-</table>
-<br>
+	<thead>
+		<tr>
+			<th>購入日時</th>
+			<th>購入者</th>
+			<th>注文個数</th>
+			<th>注文ステータス</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
+	<tbody>
+		
