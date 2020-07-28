@@ -10,6 +10,7 @@ module NaganoCake
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.i18n.default_locale = :ja
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -20,6 +21,6 @@ module NaganoCake
     config.time_zone = 'Tokyo'
 
     # デフォルトのロケールを日本（ja）に設定
-    config.i18n.default_locale = :ja
+    # config.i18n.default_locale = :ja
   end
 end
