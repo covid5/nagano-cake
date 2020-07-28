@@ -10,6 +10,7 @@
 
 	    <title>商品詳細</title>
 	</head>
+	</html>
  	<body>
  		<div class="container">
  			<div class="row"><h1>商品詳細</h1></div>
@@ -31,7 +32,7 @@
 						<dd><%= @product.salling_status_i18n %></dd>
 					</dl>
 
-					<%= link_to '編集する', edit_product_path, class: "btn btn-info" %>
+					<%= link_to '編集する', edit_admin_product_path, class: "btn btn-info" %>
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-class Member::ShippingAddressesController < ApplicationController
+class Member::ShippingAddressesController < Member::ApplicationController
 	before_action :authenticate_member!
 	before_action :ensure_correct_member, only: [:edit, :update, :destroy]
 

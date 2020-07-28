@@ -1,11 +1,9 @@
-
 class Admin::OrdersController < ApplicationController
 before_action :authenticate_admin!
   def index
   	path = Rails.application.routes.recognize_path(request.referer)
   	path_controller = path[:controller]
   	path_action = path[:action]
-
   # topページから遷移　＝＞　当日注文の注文履歴
   	if path_controller == "admin/homes" && path_action == "top"
   	  @orders = Order.where(created_at: Time.zone.now.beginning_of_day).page(params[:page]).reverse_order

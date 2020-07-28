@@ -10,12 +10,13 @@
 
 	    <title>商品編集</title>
 	</head>
+</html>
  	<body>
  		<div class="container">
  			<div class="row"><h1>商品編集</h1></div>
  			<div class="row">
 				<div class="col-lg-4">
-          <%= form_for(@product) do |f| %>
+          <%= form_with(model: [:admin, @product]) do |f| %>
 					<%= attachment_image_tag @product, :image, :fill, 300, 300 %>
           <%= f.attachment_field :image %>
 				</div>
@@ -39,3 +40,4 @@
 			</div>
 		</div>
 	</body>
+</html>

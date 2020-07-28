@@ -1,4 +1,5 @@
-class ProductsController < ApplicationController
+class Admin::ProductsController < ApplicationController
+
   def index
     @products = Product.all
     @genres = Genre.all
@@ -12,7 +13,7 @@ class ProductsController < ApplicationController
   def create
     @product_new = Product.new(product_params)
     @product_new.save
-    redirect_to products_path
+    redirect_to :action => 'index'
   end
 
   def show
@@ -27,7 +28,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @product.update(product_params)
-    redirect_to product_path(@product)
+    redirect_to :action => 'show'
   end
 
 

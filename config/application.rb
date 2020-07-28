@@ -22,5 +22,4 @@ module NaganoCake
 
     # デフォルトのロケールを日本（ja）に設定
     # config.i18n.default_locale = :ja
-  end
 end
