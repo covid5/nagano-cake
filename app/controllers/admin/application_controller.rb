@@ -1,9 +1,9 @@
-class Admins::ApplicationController < ApplicationController
-  # before_action :authenticate_admin!
-  before_action :configure_permitted_parameters, if: :devise_controller?
-    protect_from_forgery with: :exception
+class Admin::ApplicationController < Admin::ApplicationController
+	# before_action :authenticate_admin!
+	before_action :configure_permitted_parameters, if: :devise_controller?
+  	protect_from_forgery with: :exception
 
-    # sign_in後のリダイレクト先変更
+  	# sign_in後のリダイレクト先変更
   def after_sign_in_path_for(resource)
     root_path(resource)
   end
@@ -14,7 +14,7 @@ class Admins::ApplicationController < ApplicationController
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
+  	devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
 
 end

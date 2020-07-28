@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
+    resources :orders, only: [:index, :show]
+    patch '/orders/:id/update' => 'admin/orders#update'
+    patch 'order_details/:id/update' => 'admin/order_details#update'
+    resources :members, only: [:show, :edit, :update, :index]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :products, xcept: [:destroy]
   end
 
   devise_for :admins, controllers: {
@@ -12,7 +16,6 @@ Rails.application.routes.draw do
 
 
   devise_for :members
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
   namespace :member do
@@ -22,12 +25,6 @@ Rails.application.routes.draw do
       resources :cart_products
       resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
       resources :orders, only: [:index,:show]
-  end
-
-  namespace :admin do
-    resources :members, only: [:show, :edit, :update, :index]
-    resources :products, xcept: [:destroy]
-    resources :genres, only: [:index, :create, :edit, :update]
   end
 
 
