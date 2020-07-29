@@ -17,6 +17,15 @@ Rails.application.routes.draw do
 
   devise_for :members
 
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "/members/about" => "members#about"
+  get "/members/top" => "members#top"
+  get "/members/withdraw" => "members#withdraw"
+  get "/members/edit" => "members#edit"
+
+
+
+
 
   namespace :member do
       resources :products, only: [:index, :show]
@@ -29,3 +38,4 @@ Rails.application.routes.draw do
 
 
 end
+
