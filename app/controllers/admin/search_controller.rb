@@ -4,32 +4,15 @@ class Admin::SearchController < ApplicationController
   def search
     @model = params["search"]["model"]
     @content = params["search"]["content"]
-    @method = params["search"]["method"]
-    @records = search_for(@model, @content, @method)
+    @records = search_for(@model, @content)
   end
 
   private
-  def search_for(model, content, method)
+  def search_for(model, content)
     if model == 'member'
-      if method == 'perfect'
-        User.where(name: content)
-      elsif method == 'forward'
-        User.where('name LIKE ?', content+'%')
-      elsif method == 'backward'
-        User.where('name LIKE ?', '%'+content)
-      else
-        User.where('name LIKE ?', '%'+content+'%')
-      end
+        Member.where('first_name LIKE ? or last_name LIKE ? or first_name_kana LIKE ? or last_name_kana LIKE ?', '%'+content+'%', '%'+content+'%', '%'+content+'%', '%'+content+'%')
     elsif model == 'product'
-      if method == 'perfect'
-        Book.where(title: content)
-      elsif method == 'forward'
-        Book.where('title LIKE ?', content+'%')
-      elsif method == 'backward'
-        Book.where('title LIKE ?', '%'+content)
-      else
-        Book.where('title LIKE ?', '%'+content+'%')
-      end
+        Product.where('name LIKE ?', '%'+content+'%')
     end
   end
 end

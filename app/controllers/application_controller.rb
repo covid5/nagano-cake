@@ -6,11 +6,22 @@ class ApplicationController < ActionController::Base
 
   	# sign_in後のリダイレクト先変更
   def after_sign_in_path_for(resource)
-    root_path(resource)
+    case resource
+    when admin
+      root_path(resource)
+    when member
+      member_path
+    end
   end
   # sign_out後のリダイレクト先変更
   def after_sign_out_path_for(resource)
-    new_admin_session_path
+    case resource
+    when admin
+      new_admin_session_path
+    when member
+      member_top_path
+    end
+
   end
 
   protected

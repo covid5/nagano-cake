@@ -1,4 +1,5 @@
 class Admin::OrdersController < Admin::ApplicationControlle
+  #before_action :authenticate_admin!
 before_action :set_order, only: [:show, :update_order, :update_produtcts]
 
   def index

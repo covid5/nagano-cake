@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :members, only: [:show, :edit, :update, :index]
     resources :products, xcept: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
+    get '/search' => 'search#search'
   end
 
 
