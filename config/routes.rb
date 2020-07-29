@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :members, only: [:show, :edit, :update, :index]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :products, xcept: [:destroy]
+    get '/search' => 'search#search'
   end
 
   devise_for :admins, controllers: {
@@ -35,7 +36,6 @@ Rails.application.routes.draw do
       resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
       resources :orders, only: [:index,:show]
   end
-
 
 end
 

@@ -1,6 +1,5 @@
 <h1>ジャンル一覧・追加</h1>
 
-<!-- ジャンル入力フオーム -->
 <%= form_with(model: [ :admin, @genre]) do |f| %>
 
     <%= f.label :ジャンル %>
@@ -27,7 +26,6 @@
 	    </thead>
 
 	    <tbody>
-	    	<!-- ジャンル一覧　-->
 		    <% @genres.each do |genre| %>
 		    <tr>
 			    <td><%= genre.name %></td>
