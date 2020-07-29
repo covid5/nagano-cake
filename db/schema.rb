@@ -9,7 +9,15 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+
 ActiveRecord::Schema.define(version: 2020_07_18_132749) do
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.boolean "disabled", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,9 +40,9 @@ ActiveRecord::Schema.define(version: 2020_07_18_132749) do
   end
 
   create_table "orders", force: :cascade do |t|
-
-
-ActiveRecord::Schema.define(version: 2020_07_12_130425) do
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
@@ -42,13 +50,6 @@ ActiveRecord::Schema.define(version: 2020_07_12_130425) do
     t.integer "price"
     t.string "image_id"
     t.integer "salling_status"
-
-ActiveRecord::Schema.define(version: 2020_07_18_011044) do
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.boolean "disabled", default: false, null: false
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
