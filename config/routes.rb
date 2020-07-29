@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :orders, only: [:index, :show]
+    patch '/orders/:id/update' => 'admin/orders#update'
+    patch 'order_details/:id/update' => 'admin/order_details#update'
+    resources :members, only: [:show, :edit, :update, :index]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :products, xcept: [:destroy]
+    get '/search' => 'search#search'
+  end
 
   devise_for :admins, controllers: {
   	sessions: 'admins/sessions'
@@ -8,7 +17,15 @@ Rails.application.routes.draw do
 
 
   devise_for :members
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "/members/about" => "members#about"
+  get "/members/top" => "members#top"
+  get "/members/withdraw" => "members#withdraw"
+  get "/members/edit" => "members#edit"
+
+
+
 
 
   namespace :member do
@@ -20,12 +37,5 @@ Rails.application.routes.draw do
       resources :orders, only: [:index,:show]
   end
 
-  namespace :admin do
-    resources :members, only: [:show, :edit, :update, :index]
-    resources :products, xcept: [:destroy]
-    resources :genres, only: [:index, :create, :edit, :update]
-    get '/search' => 'search#search'
-  end
-
-
 end
+

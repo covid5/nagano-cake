@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg">
     <!-- ロゴ画像。あとで差し替え。 -->
     <div>
-      <%= link_to members_about_path, style: 'color: #fcbf1e' do %>
+      <%= link_to root_path, style: 'color: #fcbf1e' do %>
       <h1>LOGO</h1>
       <% end %>
     </div>
@@ -15,8 +15,8 @@
           <p>管理者としてログインしています</p>
           <div class="btn-group">
             <li class="btn btn-default"><%= link_to '商品一覧', admin_products_path, class: 'nav-link' %></li>
-            <li class="btn btn-default"><%= link_to '会員一覧', admin_genres_path, class: 'nav-link' %></li>
-            <li class="btn btn-default"><%= link_to '注文履歴一覧', admin_genres_path, class: 'nav-link' %></li>
+            <li class="btn btn-default"><%= link_to '会員一覧', admin_members_path, class: 'nav-link' %></li>
+            <li class="btn btn-default"><%= link_to '注文履歴一覧', admin_orders_path, class: 'nav-link' %></li>
             <li class="btn btn-default"><%= link_to 'ジャンル管理', admin_genres_path, class: 'nav-link' %></li>
             <li class="btn btn-default"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
         </div>
@@ -28,6 +28,7 @@
         <% elsif member_signed_in? %>
           <p>ようこそ<%= current_member.first_name %>
                   <%= current_member.last_name %>さん！</p>
+　　　　　<!-- ログイン　-->
           <div class="btn-group">
             <li class="btn btn-default"><%= link_to 'About', members_about_path, class: 'nav-link' %></li>
             <li class="btn btn-default"><%= link_to 'マイページ', members_about_path, class: 'nav-link' %></li>
