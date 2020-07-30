@@ -31,12 +31,12 @@
                   <%= current_member.last_name %>さん！</p>
           <li class="nav-item"><%= link_to 'About', members_about_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'マイページ', member_path(current_member), class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to '商品一覧', products_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '商品一覧', member_products_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'カート', member_carts_path, class: 'nav-link' %></li>
         <!-- 非ログイン -->
         <% else %>
           <li class="nav-item"><%= link_to 'About', members_about_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to '商品一覧', products_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '商品一覧', member_products_path, class: 'nav-link' %></li>
           <li class="nav-item" ><%= link_to '新規登録', new_member_registration_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ログイン', new_member_session_path, class: 'nav-link' %></li>
         <% end %>

@@ -9,12 +9,12 @@ before_action :authenticate_admin!
   	  @orders = Order.where(created_at: Time.zone.now.beginning_of_day).page(params[:page]).reverse_order
 
   	  # 会員詳細からの遷移　＝＞　該当顧客の注文履歴
-	elsif path_controller == "admin/member" && path_action == "show"
+	  elsif path_controller == "admin/member" && path_action == "show"
 	  @orders = Member.find(params[:id]).orders.page(params[:page]).reverse_order
 
 	  # ヘッダーからの遷移　＝＞　全顧客の注文履歴
-	else @orders = Order.all.page(params[:page]).reverse_order
-	end
+	  else @orders = Order.all.page(params[:page]).reverse_order
+	  end
   end
 
   def show
@@ -41,7 +41,7 @@ before_action :authenticate_admin!
   private
 
   def order_params
-  	params.require(:order).permit(:order_status)
+  	params.require(:order).permit(:status)
   end
 
   # def order_detail_params
@@ -49,6 +49,5 @@ before_action :authenticate_admin!
   # end
 
 end
-
 
 
