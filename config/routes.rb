@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   	sessions: 'admins/sessions'
   }
   root 'admin/homes#top'
-  get '/members/about' => 'members#about'
-
 
   devise_for :members
 
