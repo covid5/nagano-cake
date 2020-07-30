@@ -1,4 +1,6 @@
+
 class Member::OrdersController < ApplicationController
+
   def new
     @order = Order.new
     @shipping_addresses = ShippingAddress.all
@@ -16,10 +18,17 @@ class Member::OrdersController < ApplicationController
     redirect_to thank_path
   end
 
-
-
   def thank
   end
+
+
+  def index
+		@order = Order.all
+	end
+
+	def show
+	end
+
 
   private
   def order_params
