@@ -9,6 +9,19 @@ Rails.application.routes.draw do
     get '/search' => 'search#search'
   end
 
+  namespace :member donamespace :member do
+      resources :products, only: [:index, :show]
+      resources :carts, only: [:index, :create, :update, :destroy]
+      delete '/empty_item' => 'carts#empty_item'
+      resources :cart_products
+      resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
+      resources :orders, only: [:index, :show, :new]
+      post :confirm
+      get 'orders/confirm' => "orders#confirm"
+      get 'orders/thank' => "orders#thank"
+  end
+
+
   devise_for :admins, controllers: {
   	sessions: 'admins/sessions'
   }
@@ -20,20 +33,6 @@ Rails.application.routes.draw do
   get "/members/about" => "members#about"
   get "/members/top" => "members#top"
   get "/members/withdraw" => "members#withdraw"
-  get "/members/edit" => "members#edit"
-
-
-
-
-
-  namespace :member do
-      resources :products, only: [:index, :show]
-      resources :carts, only: [:index, :create, :update, :destroy]
-      delete '/empty_item' => 'carts#empty_item'
-      resources :cart_products
-      resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
-      resources :orders, only: [:index,:show]
-  end
+  get "/members/edit" => "members#edit"  
 
 end
-

@@ -1,4 +1,6 @@
-class Member::OrdersController < Member::ApplicationController
+
+class Member::OrdersController < ApplicationController
+
   def new
     @order = Order.new
     @shipping_addresses = ShippingAddress.all
@@ -26,8 +28,6 @@ class Member::OrdersController < Member::ApplicationController
 
 	def show
 	end
-
-
 
 
   private
