@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :orders, only: [:index, :show]
-    patch '/orders/:id/update' => 'admin/orders#update'
-    patch 'order_details/:id/update' => 'admin/order_details#update'
+    patch '/orders/:id/update' => 'orders#update'
+    patch 'order_details/:id/update' => 'order_details#update'
     resources :members, only: [:show, :edit, :update, :index]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :products, xcept: [:destroy]
