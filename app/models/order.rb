@@ -6,8 +6,6 @@ class Order < ApplicationRecord
 
   attachment :image
 
-  def full_address
-    self.post_code + self.address + self.address_name
-  end
+
 
 end
