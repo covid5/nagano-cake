@@ -1,8 +1,8 @@
 class Admin::MembersController < ApplicationController
-	#before_action :authenticate_admin!
+	before_action :authenticate_admin!
 
 	def index
-		@members = Member.all
+		@members = Member.page(params[:page]).per(10)
 	end
 
 	def show
@@ -19,14 +19,15 @@ class Admin::MembersController < ApplicationController
 		@member.update(member_params)
 		if @member.update(member_params)
 			redirect_to admin_member_path(@member.id)
-		else
+	   else
 			render :edit
-	end
-	end
-
-private
-def member_params
-	params.require(:member).permit(:first_name,:last_name,:first_name_kana,:last_name_kana,:email,:postal_code,:address,:phone_number,:encrypted_password,:status,:created_at,:updated_at)
-
+	　　end
+    end
 end
+
+    private
+    def member_params
+	    params.require(:member).permit(:first_name,:last_name,:first_name_kana,:last_name_kana,:email,:postal_code,:address,:phone_number,:encrypted_password,:status,:created_at,:updated_at)
+
+    end
 end
