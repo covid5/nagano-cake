@@ -8,4 +8,4 @@
 
 Admin.create!(id: 1, email: "aaa@aaa.com", password: "aaaaaa")
 #修正
-Admin.create!(email: 'test@mail', password: '123456')
+# Admin.create!(email: 'test@mail', password: '123456')

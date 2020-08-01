@@ -3,7 +3,8 @@
     <!-- ロゴ画像。あとで差し替え。 -->
     <div>
       <%= link_to root_path, style: 'color: #fcbf1e' do %>
-      <h1>LOGO</h1>
+      <%= image_tag "images.png", size: '200x100' %>
+      <h1>ながの CAKE </h1>
       <% end %>
     </div>
 
@@ -31,7 +32,7 @@
 　　　　　<!-- ログイン　-->
           <div class="btn-group">
             <li class="btn btn-default"><%= link_to 'About', members_about_path, class: 'nav-link' %></li>
-            <li class="btn btn-default"><%= link_to 'マイページ', member_path(current_member), class: 'nav-link' %></li>
+            <li class="btn btn-default"><%= link_to 'マイページ', members_about_path, class: 'nav-link' %></li>
             <li class="btn btn-default"><%= link_to '商品一覧', member_products_path, class: 'nav-link' %></li>
             <li class="btn btn-default"><%= link_to 'カート', member_carts_path, class: 'nav-link' %></li>
             <li class="btn btn-default"><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link' %></li>

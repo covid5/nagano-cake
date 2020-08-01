@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  devise_scope :admin do
+    root "admins/sessions#new"
+  end
+
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions'
+  }
+
   namespace :admin do
     resources :orders, only: [:index, :show]
     patch '/orders/:id/update' => 'orders#update'
@@ -9,7 +18,7 @@ Rails.application.routes.draw do
     get '/search' => 'search#search'
   end
 
-  namespace :member donamespace :member do
+  namespace :member do
       resources :products, only: [:index, :show]
       resources :carts, only: [:index, :create, :update, :destroy]
       delete '/empty_item' => 'carts#empty_item'
@@ -22,10 +31,7 @@ Rails.application.routes.draw do
   end
 
 
-  devise_for :admins, controllers: {
-  	sessions: 'admins/sessions'
-  }
-  root 'admin/homes#top'
+get '/admin/top' => 'admin/homes#top'
 
   devise_for :members
 
@@ -33,6 +39,6 @@ Rails.application.routes.draw do
   get "/members/about" => "members#about"
   get "/members/top" => "members#top"
   get "/members/withdraw" => "members#withdraw"
-  get "/members/edit" => "members#edit"  
+  get "/members/edit" => "members#edit"
 
 end
