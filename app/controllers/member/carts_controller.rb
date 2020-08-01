@@ -19,25 +19,25 @@ class Member::CartsController < ApplicationController
 			end
 		end
 		@cart_product.save
-		redirect_to :action => 'index'
+		redirect_to member_carts_path, notice: "カートに商品が追加されました"
 	end
 
 	def update
 		@cart_product = CartProduct.find(params[:id])
 		@cart_product.update(cart_product_params)
-		redirect_to request.referer
+		redirect_to request.referer, notice: "変更されました"
 	end
 
 	def destroy
 	 	@cart_product = CartProduct.find(params[:id])
 	 	@cart_product.destroy
-	 	redirect_to request.referer
+	 	redirect_to request.referer, notice: "カートから商品が削除されました"
 	end
 
 	def empty_item
 		@cart_products = CartProduct.where(cart_id: current_member.cart.id)
 		@cart_products.destroy_all
-		redirect_to request.referer
+		redirect_to request.referer, notice: "カートを空にしました"
 	end
 
 	private
