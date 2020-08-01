@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :members
+
+  get "/members/about" => "members#about"
+  get "/members/top" => "members#top"
+  get "/members/withdraw" => "members#withdraw"
+  patch "/members/hide" => "members#hide"
+  resources :members
 
   devise_scope :admin do
     root "admins/sessions#new"
@@ -7,6 +14,8 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
+  
+  get 'admin/top' => "admin/homes#top"
 
   namespace :admin do
     resources :orders, only: [:index, :show]
@@ -25,20 +34,9 @@ Rails.application.routes.draw do
       resources :cart_products
       resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
       resources :orders, only: [:index, :show, :new]
-      post :confirm
       get 'orders/confirm' => "orders#confirm"
+      post 'orders/confirm' => 'oders#confirm'
       get 'orders/thank' => "orders#thank"
   end
-
-
-get '/admin/top' => 'admin/homes#top'
-
-  devise_for :members
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get "/members/about" => "members#about"
-  get "/members/top" => "members#top"
-  get "/members/withdraw" => "members#withdraw"
-  get "/members/edit" => "members#edit"
 
 end

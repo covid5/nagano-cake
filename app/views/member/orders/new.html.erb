@@ -2,7 +2,7 @@
 <h1>注文情報入力</h1>
 
 <!-- form_for部分 -->
-<%= form_with model: @order do  |f| %>
+<%= form_with(model: [:member, @order]) do |f| %>
 
 <h3>支払方法</h3>
 <div class="field">
@@ -19,7 +19,7 @@
 
     <label><%= f.radio_button :address_option, 1, checked: "checked" %> 登録済住所から選択</label><br />
     <%= f.collection_select :address_option, @shipping_addresses, :id, :full_address %>
-    
+
 
     <br>
     <label><%= f.radio_button :address_option, 2, checked: "checked" %> 新しいお届け先</label><br />

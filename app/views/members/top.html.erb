@@ -1,18 +1,15 @@
-<table class="table table-striped">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-7" style="background-color: orange;">
-        <div class="main-visual">
+<div class="col-xs-3 col-xs-offset-1" style="margin-top: 50px;">
+  <%= render 'layouts/sidebar', genre: @genres %>
+</div>
+
+      <div class="col-lg-7">
           <div class="main-visual-content">
-            <p>ようこそNaganoCakeへ !
-              このサイトは、ケーキ販売のECサイトになります。
-              会員でない方も商品の閲覧はできますが、
-              購入には会員登録が必要になります
+            <p class="top-text">
+            ようこそNaganoCakeへ !</br>
+              このサイトは、ケーキ販売のECサイトになります。</br>
+              会員でない方も商品の閲覧はできますが、</br>
+              購入には会員登録が必要になります</br>
             </p>
-                <%= image_tag('logo_002.jpg') %>
           </div>
         </div>
-      </div>
-    </div>
   </div>
-</table>
