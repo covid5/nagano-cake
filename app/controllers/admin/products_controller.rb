@@ -1,19 +1,22 @@
 class Admin::ProductsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).per(10) # 追加
     @genres = Genre.all
   end
 
   def new
     @product_new = Product.new
-    @genres = Genre.all
+    # 修正
+    @genres = Genre.where.not(disabled: "true")
   end
 
   def create
     @product_new = Product.new(product_params)
     @product_new.save
-    redirect_to :action => 'index'
+    #修正
+    redirect_to admin_product_path(@product_new), notice: "登録されました"
   end
 
   def show
@@ -22,13 +25,14 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @genres = Genre.all
+    @genres = Genre.where.not(disabled: "true") #修正
   end
 
   def update
     @product = Product.find(params[:id])
     @product.update(product_params)
-    redirect_to :action => 'show'
+    #修正
+    redirect_to admin_product_path(@product), notice: "更新されました"
   end
 
 

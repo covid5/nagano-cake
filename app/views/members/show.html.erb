@@ -1,0 +1,92 @@
+<div class="col-lg-6 offset-lg-3 space">
+  <div class="container">
+    <h2>マイページ</h2>
+  </div>
+  <!-- お客様情報 -->
+  <div class="container space">
+    <div class="row">
+      <div class="col-lg-5"><h3>お客様情報</h3></div>
+      <div class="col-lg-2">
+        <%= link_to '編集', edit_member_path(current_member), class: 'btn-sm btn-danger' %>
+      </div>
+      <div class="col-lg-4">
+        <%= link_to 'パスワード変更', edit_member_password_path, class: 'btn-sm btn-danger' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <h4>氏名</h4>
+      </div>
+      <div class="col-lg-9">
+        <%= @member.first_name %> <%= @member.last_name %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <h4>カナ</h4>
+      </div>
+      <div class="col-lg-9">
+        <%= @member.first_name_kana %> <%= @member.last_name_kana %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <h4>郵便番号</h4>
+      </div>
+      <div class="col-lg-9">
+        〒 <%= @member.post_code %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <h4>住所</h4>
+      </div>
+      <div class="col-lg-9">
+        <%= @member.address %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <h4>電話番号</h4>
+      </div>
+      <div class="col-lg-9">
+        <%= @member.phone_number %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <h4>Eメール</h4>
+      </div>
+      <div class="col-lg-9">
+        <%= @member.email %>
+      </div>
+    </div>
+  </div>
+
+  <!-- その他のリンク -->
+  <div class="container space">
+    <div class="row">
+      <div class="col-lg-3">
+        <h4>配送先</h4>
+      </div>
+      <div class="col-lg-9">
+        <%= link_to '一覧を見る', member_shipping_addresses_path, class: 'btn btn-danger' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <h4>注文履歴</h4>
+      </div>
+      <div class="col-lg-9">
+        <%= link_to '一覧を見る', class: 'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+</div>
