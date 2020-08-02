@@ -1,15 +1,11 @@
-
 <div class="container">
 <div class="col-md-10">
 <div class="p-3 mb-2 bg-light text-dark">
-<h3>会員一覧</h3>
+<h2>会員一覧</h2>
 </div>
-<table class='table' >
-	<thead class="thead-light">
 
-<h3>会員一覧</h3>
 <table class='table table-hover table-inverse table-bordered'>
-	<thead>
+	<thead class="thead-light">
 
 		<tr>
 			<th>会員ID</th>
@@ -31,10 +27,10 @@
 	</tr>
 	<% end %>
 </table>
-
+<%= paginate @members, class: "pagination" %>
 </div>
 </div>
 
 
-<%= paginate @members, class: "pagination" %> <!--追加 -->
+
 

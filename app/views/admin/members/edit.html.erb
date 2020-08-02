@@ -1,11 +1,6 @@
-
 <h3><%= @member.last_name %><%=@member.first_name %>さんの会員情報編集</h3>
 <table class="table">
 <%= form_for @member,url: admin_member_path ,data: {"turbolinks"=>false} do |f| %>
-
-<h3><%= @member.first_name %><%=@member.last_name %>さんの会員情報編集</h3>
-<table>
-<%= form_for @member, url: admin_member_path do |f| %>
 
  <div class="form-group has-icon">
  	<tr>
@@ -18,14 +13,13 @@
 	 	<td>
 	 	<%= f.text_field :last_name %>
 	 	<%= f.text_field :first_name %>
-	 		
+
 	 	</td>
 	 	</tr>
 	 	<tr>
 	 	<td>フリガナ</td>
 	 	<td><%= f.text_field :last_name_kana %>
 	 		<%= f.text_field :first_name_kana %>
-	 		
 
 	 	<td><%= f.text_field :first_name %>
 	 	<%= f.text_field :last_name %></td>
