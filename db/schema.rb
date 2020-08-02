@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_08_01_114632) do
     t.string "address"
     t.string "address_name"
     t.integer "status", default: 1
-    t.integer "postage", default: 800
+    t.integer "postage"
     t.integer "payment_method"
     t.integer "total_amount"
     t.datetime "created_at", null: false
