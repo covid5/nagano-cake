@@ -2,7 +2,7 @@ class Admin::ProductsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @products = Product.page(params[:page]).per(10) # 追加
+    @products = Product.page(params[:page]).per(8)
     @genres = Genre.all
   end
 
@@ -25,7 +25,7 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @genres = Genre.where.not(disabled: "true") #修正
+    @genres = Genre.where.not(disabled: "true")
   end
 
   def update

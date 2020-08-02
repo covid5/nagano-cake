@@ -5,7 +5,7 @@ class Product < ApplicationRecord
 	# belongs_to :admin
 	belongs_to :genre, foreign_key: "genre_id"
 
-	enum salling_status:{sale: 0, soldout: 1}
+	enum salling_status: { 販売中: 0, 売切: 1}
 
 	def tax_price
   	  price * 1.1

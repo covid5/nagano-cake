@@ -10,10 +10,23 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+ def full_address
+		self.post_code + self.address + self.last_name + self.first_name
+	end
+
   has_one :cart, dependent: :destroy
 
   def prepare_cart
   	current_member.cart || current_member.create_cart
   end
+
+  def active_for_authentication?
+    super && (self.status? == 有効?)
+  end
+
+  def inactive_message
+   "退会済みです"
+ end
 
 end

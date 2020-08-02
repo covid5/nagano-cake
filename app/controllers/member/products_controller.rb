@@ -1,5 +1,5 @@
 class Member::ProductsController < ApplicationController
-
+	before_action :authenticate_member!
 	def index
 		@genres = Genre.where.not(disabled: "true")
 		if params[:genre_id]
