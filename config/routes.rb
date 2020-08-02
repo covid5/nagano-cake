@@ -33,10 +33,13 @@ Rails.application.routes.draw do
       delete '/empty_item' => 'carts#empty_item'
       resources :cart_products
       resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
-      resources :orders, only: [:index, :show, :new]
-      get 'orders/confirm' => "orders#confirm"
-      post 'orders/confirm' => 'oders#confirm'
       get 'orders/thank' => "orders#thank"
+      resources :orders, only: [:index, :show, :new, :create]do
+        collection do
+        post :confirm
+        end
+      end
   end
+
 
 end

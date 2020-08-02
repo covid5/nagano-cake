@@ -15,7 +15,7 @@ class MembersController < ApplicationController
 	def update
 	    @member = current_member
 	    if @member.update(member_params)
-	      redirect_to members_path(@member), success: 'お客様情報が更新されました！'
+	      redirect_to member_path(@member), success: 'お客様情報が更新されました！'
 	    else
 	      flash[:danger] = 'お客様の情報を更新出来ませんでした。空欄の箇所はありませんか？'
 	      render :edit
