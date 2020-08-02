@@ -3,7 +3,7 @@
 <!-- form_for部分 -->
 
 
-<%= form_with(model: [:admin, @product_new]) do |f| %>
+<%= form_with(model: [:admin, @product_new], local: true) do |f| %>
 
 <!-- 商品画像 -->
 <%= f.attachment_field :image %>

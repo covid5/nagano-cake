@@ -2,8 +2,9 @@
   <div>
     <h2>confirm注文情報確認</h2>
   </div>
-
-
+</div>
+<div class="col-xs-8">
+  
       <table class="table table-bordered">
 
         <thead>
@@ -26,11 +27,14 @@
             <td><%= cart.number %></td>
             <td><%= cart.sum_price.floor %></td>
           </tr>
-          <% end %>
+          
         </tbody>
         <%= f.hidden_field :member_id %>
+        <% end %>
 
       </table>
+</div>
+<div class="col-xs-4">
 
         <table class="table table-bordered">
 
@@ -54,10 +58,9 @@
               </tr>
             </tb>
         </table>
+</div>
 
-
-
-    <div>
+<div class="col-xs-9">
         <h3>支払方法</h3>
         <%= @order.payment_method %>
         <%= f.hidden_field :payment_method %><br>
@@ -72,7 +75,7 @@
         
         <%= f.submit "購入を確定する" %>
       <% end %>
-    </div>
+</div>
 
 
 

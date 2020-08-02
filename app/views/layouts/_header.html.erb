@@ -35,7 +35,7 @@
 　　　　　<!-- ログイン　-->
           <div class="btn-group">
             <li class="btn btn-default"><%= link_to 'About', members_about_path, class: 'nav-link' %></li>
-            <li class="btn btn-default"><%= link_to 'マイページ', members_about_path, class: 'nav-link' %></li>
+            <li class="btn btn-default"><%= link_to 'マイページ', members_path(current_member), class: 'nav-link' %></li>
             <li class="btn btn-default"><%= link_to '商品一覧', member_products_path, class: 'nav-link' %></li>
             <li class="btn btn-default"><%= link_to 'カート', member_carts_path, class: 'nav-link' %></li>
             <li class="btn btn-default"><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link' %></li>
@@ -53,15 +53,8 @@
         <p>ようこそ<%= current_member.first_name %>
                   <%= current_member.last_name %>さん！</p>
 
-      <% else admin_signed_in? %>
-       <div class="search-form" style="margin-top: 70px; text-align: center;">
-    <%= form_tag(admin_search_path, method: :get) do %>
-      <%= text_field_tag 'search[content]' %>
-      <%= select_tag 'search[model]', options_for_select({ "会員検索" => "member", "商品検索" => "product"}) %>
-      <%= submit_tag '検索' %>
-    <% end %>
-  </div>
       <% end %>
+  </div>
     </div>
   </nav>
 </header>

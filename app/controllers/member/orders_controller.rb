@@ -26,6 +26,14 @@ class Member::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
+    @cart_products = CartProduct.where(cart_id: current_member.cart.id)
+    @cart_products.each do |cp|
+      @order_detail = @order.order_detail.new
+      @order_detail.product_id = cp.product.id
+      @order_detail.number = cp.number
+    @order_detail.save
+    current_member.cart.cart_products.destroy_all
+    end
     redirect_to member_orders_thank_path
   end
 

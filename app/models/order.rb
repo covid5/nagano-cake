@@ -19,4 +19,8 @@ class Order < ApplicationRecord
     self.post_code + self.address + self.address_name
   end
 
+  def full_name
+    self.last_name + self.first_name
+  end
+
 end
