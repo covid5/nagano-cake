@@ -8,6 +8,9 @@
   </div>
 
   <div class="row">
+    <% flash.each do |name, msg| %>
+  <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+<% end %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= render 'devise/shared/error_messages', resource: resource %>
 

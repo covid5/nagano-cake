@@ -20,8 +20,8 @@
 <%= f.text_field :price %>
 
 <h3>販売ステータス</h3>
-<%= f.select :salling_status, Product.salling_statuses.keys.map {|k| [I18n.t("enums.product.salling_status.#{k}"), k]} %>
-
+<%= f.select :salling_status, options_for_select({ "販売中" => "販売中", "売切" => "売切"}) %>
+<!-- Product.salling_statuses.keys.map {|k| [I18n.t("enums.product.salling_status.#{k}"), k]} -->
 
 <%= f.submit "新規登録" %>
 

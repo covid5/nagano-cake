@@ -10,7 +10,7 @@
         <%= link_to '編集', edit_member_path(current_member), class: 'btn-sm btn-primary' %>
       </div>
       <div class="col-lg-4">
-        <%= link_to 'パスワード変更', edit_member_password_path, class: 'btn-sm btn-primary' %>
+        <%= link_to 'パスワード変更', edit_member_registration_path(current_member), class: 'btn-sm btn-primary' %>
       </div>
     </div>
 
@@ -19,7 +19,7 @@
         <h4>氏名</h4>
       </div>
       <div class="col-lg-9">
-        <%= @member.first_name %> <%= @member.last_name %>
+        <%= @member.last_name %> <%= @member.first_name %>
       </div>
     </div>
 
@@ -28,7 +28,7 @@
         <h4>カナ</h4>
       </div>
       <div class="col-lg-9">
-        <%= @member.first_name_kana %> <%= @member.last_name_kana %>
+        <%= @member.last_name_kana %> <%= @member.first_name_kana %>
       </div>
     </div>
 
