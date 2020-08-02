@@ -1,5 +1,6 @@
-<h1>ジャンル</h1>
-<%= form_with(model: [ :admin, @genre]) do |f| %>
+<div class="col-xs-4 col-xs-offset-1">
+<h2>ジャンル</h2>
+<%= form_with(model: [ :admin, @genre], local: true) do |f| %>
 
     <%= f.label :ジャンル %>
     <%= f.text_field :name, class: "" %>
@@ -11,3 +12,4 @@
     <%= f.submit :変更を保存 %>
 
 <% end %>
+</div>

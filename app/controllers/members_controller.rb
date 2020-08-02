@@ -27,7 +27,7 @@ class MembersController < ApplicationController
 
 	def top
 		@genres = Genre.where.not(disabled: "true")
-		@products = Product.order("RANDOM()").limit(3)
+		@products = Product.order("RANDOM()").limit(4)
 	end
 
 	def about

@@ -16,4 +16,12 @@ class Member < ApplicationRecord
   	current_member.cart || current_member.create_cart
   end
 
+  def active_for_authentication?
+    super && (self.status? == 有効?)
+  end
+
+  def inactive_message
+   "退会済みです"
+ end
+
 end
