@@ -11,7 +11,7 @@
   </div>
 
   <div class="row space">
-    <%= link_to "退会しない",members_top_path(current_member),class: "btn btn-danger" %>
-    <%= link_to "退会する", members_withdraw_path(current_member), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+    <%= link_to "退会しない",members_top_path,class: "btn btn-danger" %>
+    <%= link_to "退会する", members_hide_path(current_member), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
   </div>
 </div>

@@ -1,7 +1,6 @@
 
 <h1>注文情報入力</h1>
 
-
 <%= form_with url: { action: :confirm }, local: true do |f| %>
 
 <h3>支払方法</h3>
@@ -17,6 +16,7 @@
     <%= current_member.full_address %><br>
 
     <label><%= f.radio_button :address_option, 1, checked: "checked" %> 登録済住所から選択</label><br />
+
     <%= f.collection_select :select_address, @shipping_addresses, :id, :full_address %>
 
     <br>

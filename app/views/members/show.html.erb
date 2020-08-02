@@ -7,10 +7,10 @@
     <div class="row">
       <div class="col-lg-5"><h3>お客様情報</h3></div>
       <div class="col-lg-2">
-        <%= link_to '編集', edit_member_password_path, class: 'btn-sm btn-danger' %>
+        <%= link_to '編集', edit_member_path(current_member), class: 'btn-sm btn-primary' %>
       </div>
       <div class="col-lg-4">
-        <%= link_to 'パスワード変更', new_member_password_path, class: 'btn-sm btn-danger' %>
+        <%= link_to 'パスワード変更', edit_member_password_path, class: 'btn-sm btn-primary' %>
       </div>
     </div>
 
@@ -19,7 +19,7 @@
         <h4>氏名</h4>
       </div>
       <div class="col-lg-9">
-        <%= @member.full_name %>
+        <%= @member.first_name %> <%= @member.last_name %>
       </div>
     </div>
 
@@ -28,7 +28,7 @@
         <h4>カナ</h4>
       </div>
       <div class="col-lg-9">
-        <%= @member.last_name_kana %> <%= @member.first_name_kana %>
+        <%= @member.first_name_kana %> <%= @member.last_name_kana %>
       </div>
     </div>
 
@@ -55,7 +55,7 @@
         <h4>電話番号</h4>
       </div>
       <div class="col-lg-9">
-        <%= @member.tel %>
+        <%= @member.phone_number %>
       </div>
     </div>
 
@@ -76,7 +76,7 @@
         <h4>配送先</h4>
       </div>
       <div class="col-lg-9">
-        <%= link_to '一覧を見る', addresses_path, class: 'btn btn-danger' %>
+        <%= link_to '一覧を見る', member_shipping_addresses_path, class: 'btn btn-primary' %>
       </div>
     </div>
 
@@ -85,7 +85,7 @@
         <h4>注文履歴</h4>
       </div>
       <div class="col-lg-9">
-        <%= link_to '一覧を見る', orders_path, class: 'btn btn-danger' %>
+        <%= link_to '一覧を見る', class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
