@@ -24,7 +24,6 @@ class Admin::MembersController < ApplicationController
 	　　end
     end
 end
-
     private
     def member_params
 	    params.require(:member).permit(:first_name,:last_name,:first_name_kana,:last_name_kana,:email,:postal_code,:address,:phone_number,:encrypted_password,:status,:created_at,:updated_at)
