@@ -1,26 +1,23 @@
 
 <h1>注文情報入力</h1>
 
-<!-- form_for部分 -->
-<%= form_with model: @order do  |f| %>
+
+<%= form_with url: { action: :confirm }, local: true do |f| %>
 
 <h3>支払方法</h3>
 <div class="field">
     <label><%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %> クレジットカード</label><br />
-    <label><%= f.radio_button :payment_method, :銀行振込, checked: "checked"  %> 銀行振込</label>
+    <label><%= f.radio_button :payment_method, :銀行振込 %> 銀行振込</label>
 </div>
 
 <h3>お届け先</h3>
 <div class="field">
+
     <label><%= f.radio_button :address_option, 0, checked: "checked" %> ご自身の住所</label><br />
-    <%= current_member.full_address <%><br>
-
-
-
-
+    <%= current_member.full_address %><br>
 
     <label><%= f.radio_button :address_option, 1, checked: "checked" %> 登録済住所から選択</label><br />
-    <%= f.collection_select :address_option, @shipping_addresses, :id, :full_address %>
+    <%= f.collection_select :select_address, @shipping_addresses, :id, :full_address %>
 
     <br>
     <label><%= f.radio_button :address_option, 2, checked: "checked" %> 新しいお届け先</label><br />

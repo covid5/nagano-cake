@@ -2,7 +2,7 @@
 
 	<div class="row">
 		<h1>商品一覧</h1>
-		<%= link_to new_product_path do %>
+		<%= link_to new_admin_product_path do %>
 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		<% end %>
 	</div>
@@ -16,10 +16,10 @@
 				<th>ジャンル</th>
 				<th>ステータス</th>
 			</tr>
-			<% @products.each do |product| %>
+			<% products.each do |product| %>
 			<tr>
 				<td><%= product.id %></td>
-				<td><%= link_to(product.name,product_path(product.id)) %></td>
+				<td><%= link_to(product.name,admin_product_path(product.id)) %></td>
 				<td><%= product.price %></td>
 				<td><%= product.genre.name %></td>
 				<td><%= product.salling_status_i18n %></td>

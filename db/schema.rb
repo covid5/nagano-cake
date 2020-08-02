@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_055113) do
+ActiveRecord::Schema.define(version: 2020_08_01_114632) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,23 @@ ActiveRecord::Schema.define(version: 2020_07_19_055113) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cart_products", force: :cascade do |t|
+    t.integer "number", default: 0
+    t.integer "cart_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_products_on_cart_id"
+    t.index ["product_id"], name: "index_cart_products_on_product_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_carts_on_member_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -56,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_07_19_055113) do
     t.integer "order_id"
     t.integer "number"
     t.integer "taxed_price"
-    t.integer "production_status"
+    t.integer "production_status", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,12 +83,13 @@ ActiveRecord::Schema.define(version: 2020_07_19_055113) do
     t.string "postal_code"
     t.string "address"
     t.string "address_name"
-    t.integer "status"
-    t.integer "postage"
+    t.integer "status", default: 1
+    t.integer "postage", default: 800
     t.integer "payment_method"
     t.integer "total_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "address_option"
   end
 
   create_table "products", force: :cascade do |t|

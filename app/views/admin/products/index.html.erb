@@ -1,0 +1,30 @@
+<div class="container">
+
+	<div class="row">
+		<h1>商品一覧</h1>
+		<%= link_to new_admin_product_path do %>
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		<% end %>
+	</div>
+
+	<div class="row">
+		<table class="products-list table">
+			<tr class="active">
+				<th>商品ID</th>
+				<th>商品名</th>
+				<th>税抜価格</th>
+				<th>ジャンル</th>
+				<th>ステータス</th>
+			</tr>
+			<% @products.each do |product| %>
+			<tr>
+				<td><%= product.id %></td>
+				<td><%= link_to(product.name,admin_product_path(product.id)) %></td>
+				<td><%= product.price %></td>
+				<td><%= product.genre.name %></td>
+				<td><%= product.salling_status_i18n %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

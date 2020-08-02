@@ -1,4 +1,7 @@
-ja:
+# ja:
+#   time:
+#     formats:
+#       default: "%Y/%m/%d %H:%M:%S"
   enums:
 
     order:
@@ -10,3 +13,4 @@ ja:
       salling_status:
         sale: "販売中"
         soldout: "売切"
+

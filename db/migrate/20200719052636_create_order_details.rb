@@ -5,7 +5,7 @@ class CreateOrderDetails < ActiveRecord::Migration[5.2]
       t.integer :order_id
       t.integer :number
       t.integer :taxed_price
-      t.integer :production_status
+      t.integer :production_status, default:"1"
       t.datetime :created_at
       t.datetime :updated_at
 
