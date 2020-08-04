@@ -16,10 +16,10 @@
 			<tr><%= order.created_at %></tr>
 			<tr><%= order.postal_code %><br>
 				<%= order.address %><br>
-				<%= member.first_name member.last_name %></tr>
+				<%= member.first_name %> <%= member.last_name %></tr>
 			<tr><%= product.name %></tr>
 			<tr><%= order.total_amount %></tr>
 			<tr><%= order.status %></tr>
-			<tr><%= link_to "表示する" , order_path(order.id),class:'btn btn-default' %>
+			<tr><%= link_to "表示する" , order_path(order),class:'btn btn-default' %>
 
 			<% end %>

@@ -16,7 +16,7 @@ class Order < ApplicationRecord
 
 
   def full_address
-    self.post_code + self.address + self.address_name
+  self.post_code + self.address + self.address_name
   end
 
   def full_name
