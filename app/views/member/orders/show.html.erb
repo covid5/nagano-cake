@@ -1,45 +1,46 @@
-<h3>注文履歴詳細</h3>
+<h2>注文履歴詳細</h2>
 
 <p class="information">注文情報</p>
-	<table class="order-information">
+	<table class="table">
 		<tr>
 			<td>注文日</td>
-			<td><%= order.created_at %></td>
+			<td><%= @order.created_at.strftime('%Y/%m/%d ') %></td>
 		</tr>
 		<tr>
 			<td>配送先</td>
-			<td><%= order.postal_code %><br>
-                <%= order.address %>
-                <%= member.first_name member.last_name %>
+			<td><%= @order.member.post_code %><br>
+                <%= @order.member.address %><br>
+                <%= @order.member.last_name %>
+                <%= @order.member.first_name %>
 			 </td>
 		</tr>
 		<tr>
 			<td>支払方法</td>
-			<td><%= payment_method %></td>
+			<td><%= @order.payment_method %></td>
 		</tr>
 		<tr>
 			<td>ステータス</td>
-			<td><%= order.status %></td>
+			<td><%= @order.status %></td>
 		</tr>
 	</table>
 	<p class="info">請求情報</p>
-	<table class="payment-info">
+	<table class="table">
 		<tr>
 			<td>商品合計</td>
-			<td><%= order.total_amount %></td>
+			<td><%= @order.total_amount - @order.postage%></td>
 		</tr>
 		<tr>
 			<td>配送料</td>
-			<td><%= order.postage %></td>
+			<td><%= @order.postage %></td>
 		</tr>
 		<tr>
 			<td>ご請求額</td>
-			<td><%= order.total_amount+order.postage %></td>
+			<td><%=  @order.total_amount %></td>
 		</tr>
 
 	</table>
 	<p class="order">注文内容</p>
-	<table class="order-details">
+	<table class="table">
 		<thead>
 		<tr>
 			<th>商品</th>
@@ -48,14 +49,17 @@
 			<th>小計</th>
 		</tr>
 	</thead>
-	<% @products.each do |product| %>
-	<% @cart_product.each do|cart| %>
+	<% @sum = 0 %>
+	<% @order_details.each do |order_detail| %>
 		<tr>
-			<td><%= product.name %></td>
-			<td><%= product.price*1.1 %></td>
-			<td><%= cart_product.number %> </td>
-			<td><%=  product.price * cart_product.number %></td>
+			<td><%= order_detail.product.name %></td>
+			<td><%= order_detail.taxed_price %>
+</td>
+			<td><%= order_detail.number %> </td>
+
+			<td><%= order_detail.taxed_price * order_detail.number %>
+				<% @sum += order_detail.taxed_price * order_detail.number %>
+			</td>
 		</tr>
 		<% end %>
-		<% end %>
-		
+	

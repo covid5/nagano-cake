@@ -52,9 +52,9 @@
 
               <tr>
                 <th>請求金額</th>
-                <td><%= @order.total_amount %> </td>
+                <td><%= @order.payment_amount %> </td>
 
-                <%= f.hidden_field :total_amount, value: @order.total_amount %><br>
+                <%= f.hidden_field :total_amount, value: @order.payment_amount %><br>
 
               </tr>
             </tb>
