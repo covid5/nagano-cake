@@ -1,4 +1,4 @@
-<%= form_with(model: [:member, shipping_address])  do |f| %>
+<%= form_with(model: [:member, shipping_address], local: true)  do |f| %>
   <div class="form-group input-group">
     <%= f.label "郵便番号(ハイフンなし)", class: 'input-group-addon' %>
     <%= f.text_field :post_code, class: 'col-xs-2 shipping_address_post_code' %>

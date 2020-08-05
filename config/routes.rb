@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
-  
+
   get 'admin/top' => "admin/homes#top"
 
   namespace :admin do
-    resources :orders, only: [:index, :show]
-    patch '/orders/:id/update' => 'orders#update'
+    resources :orders, only: [:index, :show, :update]
+    # patch '/orders/:id/update' => 'orders#update'
     patch 'order_details/:id/update' => 'order_details#update'
     resources :members, only: [:show, :edit, :update, :index]
     resources :genres, only: [:index, :create, :edit, :update]
@@ -33,12 +33,9 @@ Rails.application.routes.draw do
       delete '/empty_item' => 'carts#empty_item'
       resources :cart_products
       resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
+      post 'order/confirm' => "orders#confirm"
       get 'orders/thank' => "orders#thank"
-      resources :orders, only: [:index, :show, :new, :create]do
-        collection do
-        post :confirm
-        end
-      end
+      resources :orders, only: [:index, :show, :new, :create]
   end
 
 
