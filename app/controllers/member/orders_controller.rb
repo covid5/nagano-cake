@@ -32,12 +32,13 @@ class Member::OrdersController < ApplicationController
       @order_detail.product_id = cp.product.id
       @order_detail.number = cp.number
     @order_detail.save
-    current_member.cart.cart_products.destroy_all
+  
     end
     redirect_to member_orders_thank_path
   end
 
   def thank
+    current_member.cart.cart_products.destroy_all
   end
 
 
