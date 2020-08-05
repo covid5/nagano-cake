@@ -49,7 +49,7 @@
 			<td><%= sum_total = taxed_price(order_detail.product.price).to_i * order_detail.number %>
 				<% sum_all += sum_total %>
 			</td>
-			<%= form_for(order_detail, url:{controller: 'admin/order_details', action: 'update'}) do |f| %>
+			<%= form_for(order_detail, url:admin_order_detail_path(order_detail), method: :patch) do |f| %>
 			<td><%= f.select :production_status, OrderDetail.production_statuses.keys.to_a %></td>
 			<td><%= f.submit "更新", class: "btn btn-primary btn-sm" %></td>
 			<% end %>
