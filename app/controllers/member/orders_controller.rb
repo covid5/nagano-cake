@@ -1,5 +1,5 @@
 class Member::OrdersController < ApplicationController
-
+  before_action :set_member
   def new
     @order = Order.new
     @shipping_addresses = ShippingAddress.all
@@ -26,6 +26,14 @@ class Member::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
+    @cart_products = CartProduct.where(cart_id: current_member.cart.id)
+    @cart_products.each do |cp|
+      @order_detail = @order.order_detail.new
+      @order_detail.product_id = cp.product.id
+      @order_detail.number = cp.number
+    @order_detail.save
+    current_member.cart.cart_products.destroy_all
+    end
     redirect_to member_orders_thank_path
   end
 
@@ -34,15 +42,20 @@ class Member::OrdersController < ApplicationController
 
 
   def index
-		@order = Order.all
+		@orders = Order.where(member_id: current_member.id)
+    #@orders = @member.orders
 	end
 
 	def show
     @order = Order.find_by(id: params[:id])
-	end
+    @order_details = @order.order_detail
+  end
 
 
   private
+  def set_member
+    @member = current_member
+  end
   def order_params
     params.permit(
       :postage,
@@ -54,6 +67,7 @@ class Member::OrdersController < ApplicationController
       :address_option,
       order_detail_attributes: [:id,
                                 :product_id,
+                                :product_name,
                                 :order_id,
                                 :number,
                                 :taxed_price,

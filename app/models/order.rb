@@ -19,4 +19,18 @@ class Order < ApplicationRecord
     self.post_code + self.address + self.address_name
   end
 
+  def full_name
+    self.last_name + self.first_name
+  end
+
+  def price_include_tax(price)
+    price = price*1.1
+  "#{price.floor}円"
+end
+
+  def taxed_price(price)
+      price * 1.1
+    end
+
+
 end
