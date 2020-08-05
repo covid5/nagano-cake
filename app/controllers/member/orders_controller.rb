@@ -57,6 +57,7 @@ class Member::OrdersController < ApplicationController
 
 
   def thank
+    current_member.cart.cart_products.destroy_all
   end
 
 

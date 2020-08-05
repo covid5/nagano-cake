@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   get 'admin/top' => "admin/homes#top"
 
   namespace :admin do
-    resources :orders, only: [:index, :show]
-    patch '/orders/:id/update' => 'orders#update'
+    resources :orders, only: [:index, :show, :update]
+    # patch '/orders/:id/update' => 'orders#update'
     patch 'order_details/:id/update' => 'order_details#update'
     resources :members, only: [:show, :edit, :update, :index]
     resources :genres, only: [:index, :create, :edit, :update]
