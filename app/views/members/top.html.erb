@@ -22,7 +22,7 @@
     <div class="col-xs-2 pull-right">
 
       <%= link_to member_product_path(product) do %>
-        <%= attachment_image_tag(product, :image, :fill, 100, 100, fallback: "img/no-image.png", size: "100x100") %><br>
+        <%= attachment_image_tag(product, :image, size: '100x100', fallback: "img/no-image.png", size: "100x100") %><br>
         <%= product.name %><br>
       <% end %>
 

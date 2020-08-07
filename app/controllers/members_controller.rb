@@ -42,6 +42,6 @@ class MembersController < ApplicationController
 	  private
 
 	  def member_params
-	    params.require(:member).permit(:status, :first_name, :first_name_kana, :family_name, :family_name_kana, :post_code, :address, :email, :tel, cart_items_attributes: [:_destroy])
+	    params.require(:member).permit(:status, :first_name, :last_name, :first_name_kana, :last_name_kana, :post_code, :address, :email, :phone_number)
 	  end
 end

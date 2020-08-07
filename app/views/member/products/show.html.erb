@@ -7,7 +7,7 @@
 			<%= render 'layouts/sidebar', genre: @genres %>
 		</div>
 		<div class="col-xs-4">
-				<dt><%= attachment_image_tag(@product, :image, :fill, 300, 300, fallback: "img/no-image.png", size: "300x300") %></dt>
+				<dt><%= attachment_image_tag(@product, :image, size: '300x300', fallback: "img/no-image.png", size: "300x300") %></dt>
 		</div>
 		<div class="col-xs-5">
 			<dl>
