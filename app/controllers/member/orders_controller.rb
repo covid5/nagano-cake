@@ -1,5 +1,5 @@
 class Member::OrdersController < ApplicationController
-
+  before_action :set_member
   def new
     @order = Order.new
     @shipping_addresses = ShippingAddress.where(member_id: current_member.id)
@@ -66,20 +66,26 @@ class Member::OrdersController < ApplicationController
 
 
   def thank
+    current_member.cart.cart_products.destroy_all
   end
 
 
   def index
 		@orders = Order.where(member_id: current_member.id)
     @order_detail = OrderDetail.find_by(order_id: @order)
+    #@orders = @member.orders
 	end
 
 	def show
     @order = Order.find_by(id: params[:id])
-	end
+    @order_details = @order.order_detail
+  end
 
 
   private
+  def set_member
+    @member = current_member
+  end
   def order_params
     params.permit(
       :postage,
@@ -91,6 +97,7 @@ class Member::OrdersController < ApplicationController
       :address_option,
       order_detail_attributes: [:id,
                                 :product_id,
+                                :product_name,
                                 :order_id,
                                 :number,
                                 :taxed_price,
