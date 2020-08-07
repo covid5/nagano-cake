@@ -41,9 +41,9 @@
 		<% @order_details.each do |order_detail| %>
 		<tr>
 			<td><%= order_detail.product.name %></td>
-			<td><%= taxed_price(order_detail.product.price) %></td>
+			<td><%= order_detail.taxed_price %></td>
 			<td><%= order_detail.number %></td>
-			<td><%= sum_total = taxed_price(order_detail.product.price).to_i * order_detail.number %>
+			<td><%= sum_total = order_detail.taxed_price.to_i * order_detail.number %>
 				<% sum_all += sum_total %>
 			</td>
 			<%= form_for(order_detail, url:admin_order_detail_path(order_detail), method: :patch) do |f| %>
