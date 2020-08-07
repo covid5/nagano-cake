@@ -17,12 +17,7 @@ class ApplicationController < ActionController::Base
   end
   # sign_out後のリダイレクト先変更
   def after_sign_out_path_for(resource)
-    case resource
-    when Admin
-      root_path
-    else
-      members_top_path
-    end
+    new_admin_session_path
   end
 
 
