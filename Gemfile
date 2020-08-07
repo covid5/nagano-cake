@@ -70,3 +70,4 @@ gem 'jquery-rails'
 gem 'will_paginate'
 
 gem 'enum_help'
+gem 'pry-byebug'
