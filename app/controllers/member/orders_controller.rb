@@ -25,6 +25,15 @@ class Member::OrdersController < ApplicationController
       @order_detail.save
       cp.destroy
     end
+
+    if ShippingAddress.find_by(member_id: current_member.id, address: @order.address).nil?
+      @shipping_address = ShippingAddress.new
+      @shipping_address.post_code = @order.postal_code
+      @shipping_address.address = @order.address
+      @shipping_address.address_name = @order.address_name
+      @shipping_address.member_id = current_member.id
+      @shipping_address.save
+    end
     redirect_to member_orders_thank_path
   end
 
@@ -61,7 +70,8 @@ class Member::OrdersController < ApplicationController
 
 
   def index
-		@order = Order.all
+		@orders = Order.where(member_id: current_member.id)
+    @order_detail = OrderDetail.find_by(order_id: @order)
 	end
 
 	def show
@@ -87,5 +97,9 @@ class Member::OrdersController < ApplicationController
                                 :production_status]
     ).merge(member_id: current_member.id)
 
+  end
+
+  def shipping_address_params
+    params.require(:shipping_address).permit(:member_id, :post_code, :address, :address_name)
   end
 end
