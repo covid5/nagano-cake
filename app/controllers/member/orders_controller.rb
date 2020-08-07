@@ -15,7 +15,6 @@ class Member::OrdersController < ApplicationController
     @order.address_name = params[:order][:address_name]
     @order.total_amount = params[:order][:total_amount]
     @order.save
-
     @cart_products = CartProduct.where(cart_id: current_member.cart.id)
     @cart_products.each do |cp|
       @order_detail = @order.order_detail.new
@@ -60,7 +59,6 @@ class Member::OrdersController < ApplicationController
       @order.address_name = params[:order][:address_name]
     end
     # render :new and return if params[:back] || !@order.save
-
   end
 
 
@@ -71,12 +69,8 @@ class Member::OrdersController < ApplicationController
 
 
   def index
-
 		@orders = Order.where(member_id: current_member.id).page(params[:page]).per(8)
-
-		
     @order_detail = OrderDetail.find_by(order_id: @order)
-
     #@orders = @member.orders
 	end
 

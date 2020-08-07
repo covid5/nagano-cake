@@ -1,5 +1,5 @@
-
-<h3><%= @member.last_name %><%= @member.first_name %>さんの会員詳細</h3>
+<div class="container">
+<h2><%= @member.last_name %><%= @member.first_name %>さんの会員詳細</h2>
 
 <table  class="table table-borderless table-noborder">
 	<tr>
@@ -31,10 +31,10 @@
 		<td><%= @member.email %></td>
 	</tr>
 </table>
-<table>
 	<div class="actions row">
 	<%= link_to '編集する',edit_admin_member_path(@member.id), class: 'btn btn-primary col-xs-1' %>
 
-	<%= link_to '注文履歴一覧を見る', admin_orders_path, class: 'btn btn-primary col-xs-12'  %>
+	<%= link_to '注文履歴一覧を見る', admin_orders_path, class: 'btn btn-primary col-xs-2 col-xs-offset-1'  %>
 </div>
-	
+</div>
+
