@@ -62,7 +62,7 @@ class Member::OrdersController < ApplicationController
 
 
   def index
-		@orders = Order.where(member_id: current_member.id)
+		@orders = Order.where(member_id: current_member.id).page(params[:page]).per(8)
     #@orders = @member.orders
 	end
 

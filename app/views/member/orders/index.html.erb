@@ -1,6 +1,7 @@
+<div class="container">
 <h2>注文履歴一覧</h2>
 <table class="table">
-	<thead>
+	<thead class="thead-light">
 		<tr>
 			<th>注文日</th>
 			<th>配送先</th>
@@ -29,3 +30,5 @@
 </tr>
 <% end %>
 </table>
+<%= paginate @orders %>
+</div>
