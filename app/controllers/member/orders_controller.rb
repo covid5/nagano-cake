@@ -15,7 +15,6 @@ class Member::OrdersController < ApplicationController
     @order.address_name = params[:order][:address_name]
     @order.total_amount = params[:order][:total_amount]
     @order.save
-
     @cart_products = CartProduct.where(cart_id: current_member.cart.id)
     @cart_products.each do |cp|
       @order_detail = @order.order_detail.new
@@ -51,7 +50,6 @@ class Member::OrdersController < ApplicationController
       @order.address_name = params[:order][:address_name]
     end
     # render :new and return if params[:back] || !@order.save
-
   end
 
 

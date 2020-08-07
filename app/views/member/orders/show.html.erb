@@ -41,7 +41,6 @@
 			<td>ご請求額</td>
 			<td><%=  @order.total_amount %></td>
 		</tr>
-
 	</table>
 </div>
 	<div class="col-xs-10 col-xs-offset-1">
@@ -59,10 +58,8 @@
 	<% @order_details.each do |order_detail| %>
 		<tr>
 			<td><%= order_detail.product.name %></td>
-			<td><%= order_detail.taxed_price %>
-</td>
+			<td><%= order_detail.taxed_price %></td>
 			<td><%= order_detail.number %> </td>
-
 			<td><%= order_detail.taxed_price * order_detail.number %>
 				<% @sum += order_detail.taxed_price * order_detail.number %>
 			</td>
