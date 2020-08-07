@@ -8,15 +8,17 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product_new = Product.new
-    # 修正
     @genres = Genre.where.not(disabled: "true")
   end
 
   def create
     @product_new = Product.new(product_params)
-    @product_new.save
-    #修正
-    redirect_to admin_product_path(@product_new), notice: "登録されました"
+    if @product_new.save
+       redirect_to admin_product_path(@product_new), notice: "登録されました"
+     else
+      @genres = Genre.where.not(disabled: "true")
+      render 'new', notice: "空欄はありませんか？"
+    end
   end
 
   def show
@@ -30,9 +32,12 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update(product_params)
-    #修正
-    redirect_to admin_product_path(@product), notice: "更新されました"
+    if @product.update(product_params)
+       redirect_to admin_product_path(@product), notice: "更新されました"
+     else
+      @genres = Genre.where.not(disabled: "true")
+      render 'edit', notice: "空欄はありませんか？"
+    end
   end
 
 
