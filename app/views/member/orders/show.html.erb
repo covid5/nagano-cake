@@ -1,7 +1,9 @@
+<div class="container">
 <h2>注文履歴詳細</h2>
-
-<p class="information">注文情報</p>
+<div class="row">
+<div class="col-xs-6 col-xs-offset-1">
 	<table class="table">
+		<caption align="left">1注文情報</caption>
 		<tr>
 			<td>注文日</td>
 			<td><%= @order.created_at.strftime('%Y/%m/%d ') %></td>
@@ -23,8 +25,10 @@
 			<td><%= @order.status %></td>
 		</tr>
 	</table>
-	<p class="info">請求情報</p>
+</div>
+<div class="col-xs-3">
 	<table class="table">
+		<caption align="left">2請求情報</caption>
 		<tr>
 			<td>商品合計</td>
 			<td><%= @order.total_amount - @order.postage%></td>
@@ -39,8 +43,10 @@
 		</tr>
 
 	</table>
-	<p class="order">注文内容</p>
+</div>
+	<div class="col-xs-10 col-xs-offset-1">
 	<table class="table">
+		<caption align="left">注文内容</caption>
 		<thead>
 		<tr>
 			<th>商品</th>
@@ -62,4 +68,7 @@
 			</td>
 		</tr>
 		<% end %>
-	
+	</table>
+</div>
+</div>
+</div>
