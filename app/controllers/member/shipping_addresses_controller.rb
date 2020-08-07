@@ -11,16 +11,23 @@ class Member::ShippingAddressesController < ApplicationController
 	def create
 		@shipping_address = ShippingAddress.new(shipping_address_params)
 		@shipping_address.member_id = current_member.id
-		@shipping_address.save
-	    redirect_to :action => 'index'
+		if @shipping_address.save
+	       redirect_to :action => 'index'
+	    else
+	       @shipping_addresses = ShippingAddress.where(member_id: current_member.id)
+	   	   render 'index'
+	    end
 	end
 
 	def edit
 	end
 
 	def update
-		@shipping_address.update(shipping_address_params)
-		redirect_to :action => 'index'
+		if @shipping_address.update(shipping_address_params)
+			redirect_to :action => 'index'
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy

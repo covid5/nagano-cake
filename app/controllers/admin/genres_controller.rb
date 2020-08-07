@@ -8,8 +8,11 @@ class Admin::GenresController < ApplicationController
 
 	def create
 		@genre = Genre.new(genre_params)
-		@genre.save
-		redirect_to request.referer, notice: "登録されました"
+		if @genre.save
+		   redirect_to request.referer, notice: "登録されました"
+		else
+		   redirect_to request.referer, notice: "ジャンル名が空欄です"
+		end
 	end
 
 	def edit
@@ -18,8 +21,11 @@ class Admin::GenresController < ApplicationController
 
 	def update
 		@genre = Genre.find(params[:id])
-		@genre.update(genre_params)
-		redirect_to admin_genres_path, notice: "更新されました"
+		if @genre.update(genre_params)
+		   redirect_to admin_genres_path, notice: "更新されました"
+		else
+		   redirect_to request.referer, notice: "ジャンル名が空欄です"
+		end
 	end
 
 

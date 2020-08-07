@@ -36,6 +36,7 @@ class MembersController < ApplicationController
     def hide
     	@member = current_member
 	    @member.update(status: true)
+	    reset_session
 	    redirect_to members_top_path, info: 'ありがとうございました。またのご利用を心よりお待ちしております。'
     end
 
