@@ -1,24 +1,17 @@
 # README
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+
+*ながのcake
+長野県のケーキ屋さんのECサイト
+
+*お客様は好きな商品を選んでサイト上で購入でき、配送先も自由に設定できる。
+管理画面から商品登録してサイトに公開できる。
 
 * Ruby version
+5.2.4
 
-* System dependencies
+*商品登録、会員管理、カート機能、検索機能
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+*covid-5
