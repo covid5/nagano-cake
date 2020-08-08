@@ -1,0 +1,29 @@
+<%= render 'layouts/errors',obj: @product_new %>
+<h1>商品新規登録</h1>
+
+<!-- form_for部分 -->
+
+
+<%= form_with(model: [:admin, @product_new], local: true) do |f| %>
+
+<!-- 商品画像 -->
+<%= f.attachment_field :image %>
+<h3>商品名</h3>
+<%= f.text_field :name %>
+<h3>商品説明</h3>
+<%= f.text_area :description %>
+
+<!-- ジャンルのプルダウンからの選択、ジャンルの登録に紐づいているので後から確認 -->
+<h3>ジャンル</h3>
+<%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択してください--" %>
+
+<h3>税抜価格</h3>
+<%= f.text_field :price %>
+
+<h3>販売ステータス</h3>
+<%= f.select :salling_status, options_for_select({ "販売中" => "販売中", "売切" => "売切"}) %>
+<!-- Product.salling_statuses.keys.map {|k| [I18n.t("enums.product.salling_status.#{k}"), k]} -->
+
+<%= f.submit "新規登録" %>
+
+<% end %>

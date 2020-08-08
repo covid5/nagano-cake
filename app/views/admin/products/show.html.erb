@@ -1,0 +1,26 @@
+ 		<div class="container">
+ 			<div class="row"><h1>商品詳細</h1></div>
+ 			<div class="row">
+				<div class="col-lg-4">
+					<%= attachment_image_tag @product, :image, size: '200x200' %>
+				</div>
+				<div class="col-lg-8">
+					<dl>
+						<dt>商品名</dt>
+						<dd><%= @product.name %></dd>
+						<dt>商品説明</dt>
+						<dd><%= @product.description %></dd>
+						<dt>ジャンル</dt>
+						<dd><%= @product.genre.name %></dd>
+						<dt>税込価格（税抜価格）</dt>
+						<!--修正 tax_pricをモデルで定義-->
+						<dd><%= @product.tax_price.floor %>(<%= @product.price %>)円</dd> 
+						<dt>販売ステータス</dt>
+						<dd><%= @product.salling_status_i18n %></dd>
+					</dl>
+
+					<%= link_to '編集する', edit_admin_product_path, class: "btn btn-info" %>
+				</div>
+			</div>
+		</div>
+

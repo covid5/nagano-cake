@@ -1,0 +1,16 @@
+# ja:
+#   time:
+#     formats:
+#       default: "%Y/%m/%d %H:%M:%S"
+
+  enums:
+
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        bank_transfer: "銀行振込"
+
+    # product:
+    #   salling_status:
+    #     sale: "販売中"
+    #     soldout: "売切"

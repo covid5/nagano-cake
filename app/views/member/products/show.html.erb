@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+		<h2>商品詳細</h2>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+			<%= render 'layouts/sidebar', genre: @genres %>
+		</div>
+		<div class="col-xs-4">
+				<dt><%= attachment_image_tag(@product, :image, size: '300x300', fallback: "img/no-image.png", size: "300x300") %></dt>
+		</div>
+		<div class="col-xs-5">
+			<dl>
+				<dd class="product-show"><%= @product.name %></dd>
+				<dd class="product-show"><%= @product.description %></dd>
+				<dd>¥ <%= @product.tax_price.floor %> （税込み）</dd>
+				<%= form_for @cart_product, url: member_carts_path do |f| %>
+				  <%= f.hidden_field :product_id, value: @product.id %>
+				  <dd class="product-show"><%= f.select :number, (1..10) %></dd>
+				  <dd class="product-show"><%= f.submit "カートに入れる", class: "btn btn-info" %></dd>
+				<% end %>
+			</dl>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,15 @@
+<div class="col-xs-4 col-xs-offset-1">
+<h2>ジャンル</h2>
+<%= form_with(model: [ :admin, @genre], local: true) do |f| %>
+
+    <%= f.label :ジャンル %>
+    <%= f.text_field :name, class: "" %>
+
+    <%= f.radio_button :disabled, :false %>
+    <%= f.label :有効 %>
+    <%= f.radio_button :disabled, :true %>
+    <%= f.label :無効 %>
+    <%= f.submit :変更を保存 %>
+
+<% end %>
+</div>

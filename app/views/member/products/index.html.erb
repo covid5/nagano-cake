@@ -1,0 +1,34 @@
+
+	<div class="col-xs-3" style="margin-top: 70px;">
+		<%= render 'layouts/sidebar', genre: @genres %>
+	</div>
+
+	<div>
+		<div class="col-xs-8">
+
+		<% if params[:genre_id] %>
+		  <h2><%= @genre.name %>一覧</h2>
+		<% else %>
+		  <h2>商品一覧</h2>
+		<% end %>
+	</div>
+
+		<% @products.each do |product| %>
+		<div class="col-xs-3 pull-right">
+
+		  <%= link_to member_product_path(product) do %>
+		    <%= attachment_image_tag(product, :image, size: '150x150', fallback: "img/no-image.png", size: "150x150") %><br>
+		    <%= product.name %><br>
+		  <% end %>
+
+		  <p>￥ <%= product.tax_price.floor %> （税込み）</p>
+
+	    </div>
+	    <% end %>
+
+	    <div class="col-xs-3 col-xs-offset-5">
+	      <%= paginate @products, class: "pagination" %>
+	    </div>
+	</div>
+
+

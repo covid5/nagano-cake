@@ -1,0 +1,73 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 offset-2">
+<h2>注文履歴詳細</h2>
+<table class="table-info">
+	<tr>
+		<th>購入者</th>
+		<td><%= @order.member.last_name%> <%=@order.member.first_name %></td>
+	</tr>
+	<tr>
+		<th>配送先</th>
+		<td><%= @order.address %></td>
+		<td><%= @order.address_name %></td>
+	</tr>
+	<tr>
+		<th>支払い方法</th>
+		<td><%= @order.payment_method %></td>
+	</tr>
+	<tr>
+		<th>注文ステータス</th>
+		<td><%= form_for @order, url: {controller: 'admin/orders', action: 'update'} do |f| %>
+			<%= f.select :status, Order.statuses.keys.to_a %>
+			<%= f.submit "更新", class: "btn btn-primary btn-sm" %>
+			<% end %>
+		</td>
+	</tr>
+</table>
+<table class="table table-borderless">
+	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>単価（税込）</th>
+			<th>数量</th>
+			<th>小計</th>
+			<th>制作ステータス</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% sum_all = 0 %>
+		<% @order_details.each do |order_detail| %>
+		<tr>
+			<td><%= order_detail.product.name %></td>
+			<td><%= order_detail.taxed_price %></td>
+			<td><%= order_detail.number %></td>
+			<td><%= sum_total = order_detail.taxed_price.to_i * order_detail.number %>
+				<% sum_all += sum_total %>
+			</td>
+			<%= form_for(order_detail, url:admin_order_detail_path(order_detail), method: :patch) do |f| %>
+			<td><%= f.select :production_status, OrderDetail.production_statuses.keys.to_a %></td>
+			<td><%= f.submit "更新", class: "btn btn-primary btn-sm" %></td>
+			<% end %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<table class="pull-right">
+	<tr>
+		<th>商品合計</th>
+		<td><%= sum_all %>円</td>
+	</tr>
+	<tr>
+		<th>送料</th>
+		<td><%= @order.postage %>円</td>
+	</tr>
+	<tr>
+		<th>請求金額合計</th>
+		<td><%= @order.total_amount %>円</td>
+	</tr>
+</table>
+</div>
+</div>
+</div>
